@@ -1,0 +1,5 @@
+merb_relaxdb
+============
+
+A plugin for the Merb framework that provides integration with CouchDB via the RelaxDB gem
+RelaxDB is currently only available via github
