@@ -12,7 +12,8 @@ module Merb
           ::RelaxDB::Database.std_db.get
           Merb.logger.info "RelaxDB connected to CouchDB #{config_to_url}"
         rescue
-          Merb.logger.error "RelaxDB could not connect to CouchDB at #{config_to_url}"
+          puts "RelaxDB could not connect to CouchDB at #{config_to_url}. Exiting..."
+          Merb.logger.error "RelaxDB could not connect to CouchDB at #{config_to_url}. Exiting..."
           exit(1)
         end
       end

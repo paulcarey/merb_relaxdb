@@ -14,7 +14,7 @@ spec = Gem::Specification.new do |s|
   s.version = VERSION
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
-  s.extra_rdoc_files = ["README", "LICENSE", 'TODO']
+  s.extra_rdoc_files = ["README", "LICENSE"]
   s.summary = SUMMARY
   s.description = s.summary
   s.author = AUTHOR
@@ -23,7 +23,7 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('merb', '>= 0.4.0')
   s.require_path = 'lib'
   s.autorequire = PLUGIN
-  s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
+  s.files = %w(LICENSE README Rakefile) + Dir.glob("{lib,spec}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
