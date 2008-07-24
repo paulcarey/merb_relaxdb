@@ -1,0 +1,9 @@
+:development:
+  :host: localhost
+  :port: 5984
+  :db: mydb_dev
+  
+:test:
+  :host: localhost
+  :port: 5984
+  :db: mydb_test
