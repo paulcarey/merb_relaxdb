@@ -9,11 +9,11 @@ module Merb
       def connect
         set_database
         begin
-          ::RelaxDB::Database.std_db.get
-          Merb.logger.info "RelaxDB connected to CouchDB #{config_to_url}"
+          ::RelaxDB.db.get
+          Merb.logger.info "RelaxDB connected to CouchDB #{::RelaxDB.db.url}"
         rescue
-          puts "RelaxDB could not connect to CouchDB at #{config_to_url}. Exiting..."
-          Merb.logger.error "RelaxDB could not connect to CouchDB at #{config_to_url}. Exiting..."
+          puts "RelaxDB could not connect to CouchDB at #{::RelaxDB.db.url} Exiting..."
+          Merb.logger.error "RelaxDB could not connect to CouchDB at #{::RelaxDB.db.url} Exiting..."
           exit(1)
         end
       end
@@ -21,14 +21,10 @@ module Merb
       def set_database
         config_file = Merb.root / "config" / "couchdb.yml"
         full_config = Erubis.load_yaml_file(config_file)
-        @config = full_config[Merb.environment.to_sym]
-        ::RelaxDB::Database.set_std_db(@config)
+        config = full_config[Merb.environment.to_sym]
+        ::RelaxDB.configure(config)
       end
-      
-      def config_to_url
-        "http://#{@config[:host]}:#{@config[:port]}/#{@config[:db]}"
-      end
-            
+                  
     end
     
   end
