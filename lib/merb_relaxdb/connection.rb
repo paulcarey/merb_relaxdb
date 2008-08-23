@@ -12,7 +12,8 @@ module Merb
           ::RelaxDB.db.get
           Merb.logger.info "RelaxDB connected to CouchDB #{::RelaxDB.db.url}"
         rescue => e
-          Merb.logger.error "RelaxDB could not connect to CouchDB at #{::RelaxDB.db.url} \n\tRoot cause:#{e.backtrace.join("\n")}"
+          url = ::RelaxDB.db ? ::RelaxDB.db.url : "<initialisation error>"
+          Merb.logger.error "RelaxDB could not connect to CouchDB at #{url} \n\tRoot cause:#{e}\n#{e.backtrace.join("\n")}"
           exit(1)
         end
       end

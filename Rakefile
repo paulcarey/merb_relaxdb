@@ -31,7 +31,7 @@ Rake::GemPackageTask.new(spec) do |pkg|
 end
 
 task :install => [:package] do
-  sh %{sudo gem install pkg/#{NAME}-#{VERSION} --no-update-sources}
+  sh %{sudo gem install --local pkg/#{NAME}-#{VERSION} --no-update-sources}
 end
 
 namespace :jruby do
