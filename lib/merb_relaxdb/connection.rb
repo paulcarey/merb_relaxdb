@@ -10,10 +10,10 @@ module Merb
         begin
           set_database
           ::RelaxDB.db.get
-          Merb.logger.info "RelaxDB connected to CouchDB #{::RelaxDB.db.url}"
+          Merb.logger.info "RelaxDB connected to CouchDB #{::RelaxDB.db.uri}"
         rescue => e
-          url = ::RelaxDB.db ? ::RelaxDB.db.url : "<initialisation error>"
-          Merb.logger.error "RelaxDB could not connect to CouchDB at #{url} \n\tRoot cause:#{e}\n#{e.backtrace.join("\n")}"
+          uri = ::RelaxDB.db ? ::RelaxDB.db.uri : "<initialisation error>"
+          Merb.logger.fatal "RelaxDB could not connect to CouchDB at #{uri} \n\tRoot cause:#{e}\n#{e.backtrace.join("\n")}"
           exit(1)
         end
       end
@@ -24,6 +24,7 @@ module Merb
         config = full_config[Merb.environment.to_sym]
         config[:logger] = Merb.logger
         ::RelaxDB.configure(config)
+        ::RelaxDB.use_db(config[:db])
       end
                   
     end
