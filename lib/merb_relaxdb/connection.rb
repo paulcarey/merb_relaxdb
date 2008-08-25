@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'relaxdb'
-
 module Merb
   module RelaxDB
     

@@ -1,5 +1,33 @@
 merb_relaxdb
 ============
 
-A plugin for the Merb framework that provides integration with CouchDB via the RelaxDB gem
-RelaxDB is currently only available via github
+A plugin for the Merb framework that provides integration with CouchDB via the RelaxDB gem.
+
+merb_relaxdb expects your merb app to augment the standard layout as listed in tree below.
+couchdb.yml is mandatory. Reference data, sample data and views are optional.
+couchdb.yml.sample is supplied in this distribution. Copy and modify as necessary.
+
+To use merb_relaxdb, list 'dependency "merb_relaxdb"' in in the dependency section of your_merb_app/config/init.rb, but not in the Merb::BootLoader.after_app_loads block.
+
+For more details on using RelaxDB, see the RelaxDB readme and specs.
+
+my_merb_app $ tree
+.
+|-- Rakefile
+|-- app
+|-- autotest
+|-- config
+|   |-- couchdb.yml
+|-- couchdb
+|   |-- data
+|   |   |-- reference
+|   |   |   `-- reference_data.rb
+|   |   `-- sample
+|   |       `-- sample_data.rb
+|   `-- views
+|       `-- views.js
+|-- lib
+|-- log
+|-- public
+|-- scratch
+`-- spec
