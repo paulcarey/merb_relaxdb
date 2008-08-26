@@ -17,4 +17,7 @@ if defined?(Merb::Plugins)
   
   Merb::Plugins.add_rakefiles "merb_relaxdb/merbtasks"
   
+  generators = File.join(File.dirname(__FILE__), 'generators')
+  Merb.add_generators generators / :model
+  
 end

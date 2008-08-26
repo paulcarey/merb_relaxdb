@@ -21,7 +21,10 @@ spec = Gem::Specification.new do |s|
   s.email = EMAIL
   s.homepage = HOMEPAGE
   s.add_dependency('merb', '>= 0.9.4')
-  # s.add_dependency('relaxdb', '>= 0.1.0')
+  
+  # s.add_dependency('relaxdb', '>= 0.1.0') # causes rake install to fail
+  # s.add_dependency('paulcarey-relaxdb', '>= 0.1.0') # allows rake install to succeed
+  
   s.require_path = 'lib'
   s.autorequire = PLUGIN
   s.files = %w(LICENSE README.textile Rakefile) + Dir.glob("{lib,spec}/**/*")
