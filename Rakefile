@@ -34,6 +34,7 @@ Rake::GemPackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
 end
 
+desc "Install"
 task :install => [:package] do
   sh %{sudo gem install --local pkg/#{NAME}-#{GEM_VERSION} --no-update-sources}
 end
