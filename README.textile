@@ -36,7 +36,7 @@ For more details on using RelaxDB, see the "RelaxDB wiki":http://github.com/paul
   `-- spec
   
 </code>
-</pre
+</pre>
 
 h3. Sample merb/merb-auth/setup.rb
 
