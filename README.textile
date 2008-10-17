@@ -1,14 +1,18 @@
 h2. Overview
 
-merb_relaxdb is a merb plugin that provides integration with CouchDB via the RelaxDB gem.
+merb_relaxdb is a merb plugin that provides integration with CouchDB via the RelaxDB gem. Version numbers indicate compatability with Merb. The current version has been tested against merb RC1 (0.9.9). 
 
-merb_relaxdb expects your merb app to augment the standard layout as described in the tree below.
+The current release includes integration with merb-auth, but this should not yet be considered stable. A sample integration file is included below.
+
+merb_relaxdb expects your merb app to augment the standard layout as described in the following tree.
 couchdb.yml is mandatory. Reference data, sample data and views are optional.
-couchdb.yml.sample is supplied in this distribution. Copy and modify as necessary.
+merb-gen model my_model will create a sample couchdb.yml.
 
-To use merb_relaxdb, list @dependency "merb_relaxdb"@ in the dependency section of your_merb_app/config/init.rb, but not in the @Merb::BootLoader.after_app_loads@ block.
+To use merb_relaxdb, list @dependency "merb_relaxdb", "0.9.9"@ in @config/dependencies.rb@ and @use_orm :relaxdb@ in @config/init.rb@
 
 For more details on using RelaxDB, see the "RelaxDB wiki":http://github.com/paulcarey/relaxdb/wikis 
+<pre>
+<code>
 
   my_merb_app $ tree
   .
@@ -30,3 +34,46 @@ For more details on using RelaxDB, see the "RelaxDB wiki":http://github.com/paul
   |-- public
   |-- scratch
   `-- spec
+  
+</code>
+</pre
+
+h3. Sample merb/merb-auth/setup.rb
+
+<pre>
+<code>
+begin
+  Merb::Authentication.user_class = User 
+  
+  # Mixin the salted user mixin  
+  require 'merb-auth-more/mixins/salted_user'
+  require 'merb_relaxdb/rdb_salted_user'
+  
+  Merb::Authentication.user_class.class_eval{ include Merb::Authentication::Mixins::SaltedUser }
+      
+  # Setup the session serialization
+  class Merb::Authentication
+
+    def fetch_user(session_user_id)
+      RelaxDB.load(session_user_id) rescue nil
+    end
+
+    def store_user(user)
+      user.nil? ? user : user._id
+    end
+  end
+  
+rescue => e
+  Merb.logger.error <<-TEXT
+  
+    You need to setup some kind of user class with merb-auth.  
+    Merb::Authentication.user_class = User
+    
+    If you want to fully customize your authentication you should use merb-core directly.  
+    
+    See lib/authentication/setup.rb and strategies.rb to customize your setup
+
+    TEXT
+end
+</code>
+</pre>

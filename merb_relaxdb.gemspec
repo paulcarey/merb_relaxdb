@@ -1,13 +1,14 @@
 Gem::Specification.new do |s|
   s.name = "merb_relaxdb"
-  s.version = "0.1.0"
-  s.date = "2008-08-26"
+  s.version = "0.9.9"
+  s.date = "2008-10-17"
   s.summary = "Merb plugin that provides integration with CouchDB"
   s.email = "paul.p.carey@gmail.com"
   s.homepage = "http://github.com/paulcarey/merb_relaxdb/"
   s.has_rdoc = false
   s.authors = ["Paul Carey"]
   s.files = ["LICENSE",
+   "Generators",
    "README.textile",
    "Rakefile",
    "lib/generators",
@@ -21,12 +22,13 @@ Gem::Specification.new do |s|
    "lib/merb_relaxdb/connection.rb",
    "lib/merb_relaxdb/couchdb.yml.sample",
    "lib/merb_relaxdb/merbtasks.rb",
+   "lib/merb_relaxdb/rdb_salted_user.rb",
    "lib/merb_relaxdb.rb",
    "spec/merb_relaxdb_spec.rb",
    "spec/spec_helper.rb"]
   s.bindir = "bin"
   s.autorequire = "merb_relaxdb"
-  s.add_dependency "merb", ">= 0.9.4" # removed ", runtime" as was failing locally
+  s.add_dependency "merb", ">= 0.9.9" # removed ", runtime" as was failing locally
   s.require_paths = ["lib"]
   s.required_rubygems_version = ">= 0"
 end
