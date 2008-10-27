@@ -21,8 +21,7 @@ spec = Gem::Specification.new do |s|
   s.author = AUTHOR
   s.email = EMAIL
   s.homepage = HOMEPAGE
-  s.add_dependency('merb', '>= 0.9.9')
-  
+
   # s.add_dependency('relaxdb', '>= 0.1.0') # causes rake install to fail
   # s.add_dependency('paulcarey-relaxdb', '>= 0.1.0') # allows rake install to succeed
   
