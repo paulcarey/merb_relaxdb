@@ -4,7 +4,7 @@ require 'merb-core/tasks/merb_rake_helper'
 
 PLUGIN = "merb_relaxdb"
 GEM_NAME = "merb_relaxdb"
-GEM_VERSION = "0.9.9"
+GEM_VERSION = "0.9.10"
 AUTHOR = "Paul Carey"
 EMAIL = "paul.p.carey@gmail.com"
 HOMEPAGE = "http://github.com/paulcarey/merb_relaxdb/"
