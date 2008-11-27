@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "merb_relaxdb"
-  s.version = "0.9.9"
-  s.date = "2008-10-17"
+  s.version = "1.0"
+  s.date = "2008-11-27"
   s.summary = "Merb plugin that provides integration with CouchDB"
   s.email = "paul.p.carey@gmail.com"
   s.homepage = "http://github.com/paulcarey/merb_relaxdb/"
@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
    "spec/spec_helper.rb"]
   s.bindir = "bin"
   s.autorequire = "merb_relaxdb"
-  s.add_dependency "merb-core", ">= 1.0.2" # removed ", runtime" as was failing locally
+  s.add_dependency "merb-core", ">= 1.0" # removed ", runtime" as was failing locally
   s.require_paths = ["lib"]
   s.required_rubygems_version = ">= 0"
 end
