@@ -29,6 +29,9 @@ namespace :relaxdb do
       require filename
     end
   end
+  
+  desc "Create base CouchDB environment from scratch (no sample data)"
+  task :basedb => ["relaxdb:db", "relaxdb:views", "relaxdb:data"]  
 
   task :check_env do
     unless ENV['MERB_ENV']
