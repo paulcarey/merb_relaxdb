@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
    "spec/spec_helper.rb"]
   s.bindir = "bin"
   s.autorequire = "merb_relaxdb"
-  s.add_dependency "merb", ">= 0.9.9" # removed ", runtime" as was failing locally
+  s.add_dependency "merb-core", ">= 1.0.2" # removed ", runtime" as was failing locally
   s.require_paths = ["lib"]
   s.required_rubygems_version = ">= 0"
 end
