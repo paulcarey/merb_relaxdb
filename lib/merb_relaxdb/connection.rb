@@ -10,7 +10,6 @@ module Merb
       def connect
         begin
           configure_db
-          ::RelaxDB.db.get
           Merb.logger.info "RelaxDB connected to CouchDB #{::RelaxDB.db.uri}"
         rescue => e
           uri = ::RelaxDB.db ? ::RelaxDB.db.uri : "<initialisation error>"
