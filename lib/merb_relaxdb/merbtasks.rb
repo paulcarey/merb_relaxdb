@@ -31,9 +31,7 @@ namespace :relaxdb do
 
   desc "Create CouchDB sample data"
   task :sample => [:check_env, :merb_env] do
-    Dir['couchdb/data/sample/**/*.rb'].each do |filename|
-      require filename
-    end
+    create_sample_data
   end
   
   desc "Create base CouchDB environment from scratch (no sample data)"
@@ -43,6 +41,12 @@ namespace :relaxdb do
     unless ENV['MERB_ENV']
       puts "MERB_ENV must be specified. Example: rake relaxdb MERB_ENV=development"
       exit(1)
+    end
+  end
+
+  def create_sample_data
+    Dir['couchdb/data/sample/**/*.rb'].each do |filename|
+      require filename
     end
   end
 
