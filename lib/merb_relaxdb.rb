@@ -8,12 +8,12 @@ if defined?(Merb::Plugins)
   }
   
   Merb::BootLoader.before_app_loads do
-  end
-  
-  Merb::BootLoader.after_app_loads do
     require "yaml"
     require "merb_relaxdb/connection.rb"  
     Merb::RelaxDB.connect
+  end
+  
+  Merb::BootLoader.after_app_loads do
   end
   
   Merb::Plugins.add_rakefiles "merb_relaxdb/merbtasks"

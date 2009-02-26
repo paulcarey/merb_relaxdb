@@ -4,13 +4,17 @@ task :relaxdb => ["relaxdb:db", "relaxdb:views", "relaxdb:data", "relaxdb:sample
 namespace :relaxdb do
 
   desc "Create CouchDB database"
-  task :db => [:check_env, :merb_env] do
+  task :db => [:check_env] do
+    puts "Creating db #{RelaxDB.db.name}"
+    
     RelaxDB.delete_db(RelaxDB.db.name) rescue "ok"
     RelaxDB.use_db(RelaxDB.db.name)
   end
 
   desc "Create CouchDB views"
-  task :views => [:check_env, :merb_env] do
+  task :views => [:check_env] do
+    puts "Creating views"
+    
     Dir['couchdb/views/**/*.js'].each do |filename|
       RelaxDB::ViewUploader.upload(filename)
     end
@@ -18,6 +22,8 @@ namespace :relaxdb do
   
   desc "Create CouchDB reference data"
   task :data => [:check_env, :merb_env] do
+    puts "Creating ref data"
+    
     Dir['couchdb/data/reference/**/*.rb'].each do |filename|
       require filename
     end
