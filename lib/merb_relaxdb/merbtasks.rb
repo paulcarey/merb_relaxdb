@@ -11,14 +11,25 @@ namespace :relaxdb do
     RelaxDB.use_db(RelaxDB.db.name)
   end
 
-  desc "Create CouchDB views"
-  task :views => [:check_env] do
-    puts "Creating views"
+  desc "Create CouchDB views auto generated on model load"
+  task :autoviews => [:check_env] do
+    puts "Creating auto generated views"
+    RelaxDB.use_db RelaxDB.db.name    
+    RelaxDB.create_views
+    Rake::Task["merb_env"].invoke
+  end
+  
+  desc "Create CouchDB views from hand coded JavaScript"
+  task :hand_coded_views => [:check_env] do
+    puts "Creating hand coded views"
     
     Dir['couchdb/views/**/*.js'].each do |filename|
       RelaxDB::ViewUploader.upload(filename)
     end
   end
+  
+  desc "Create hand coded and auto generated views"
+  task :views => [:autoviews, :hand_coded_views]
   
   desc "Create CouchDB reference data"
   task :data => [:check_env, :merb_env] do
