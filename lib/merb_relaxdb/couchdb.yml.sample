@@ -9,5 +9,4 @@
   :port: 5984
   :db: mydb_test
   :design_doc: my_design_doc
-  :create_views: true
   

@@ -15,7 +15,7 @@ namespace :relaxdb do
   task :autoviews => [:check_env] do
     puts "Creating auto generated views"
     RelaxDB.use_db RelaxDB.db.name    
-    RelaxDB.create_views
+    RelaxDB.enable_view_creation
     Rake::Task["merb_env"].invoke
   end
   
