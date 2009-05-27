@@ -45,8 +45,18 @@ namespace :relaxdb do
     create_sample_data
   end
   
+  desc "Create minimal CouchDB environment from scratch"
+  task :mindb => ["relaxdb:db", "relaxdb:views"] do
+    Dir['couchdb/data/min/**/*.rb'].each { |f| require f }
+  end
+  
   desc "Create base CouchDB environment from scratch (no sample data)"
   task :basedb => ["relaxdb:db", "relaxdb:views", "relaxdb:data"]  
+  
+  desc "Apply all outstanding migrations"
+  task :migrate => [:check_env, :merb_env] do
+    RelaxDB::Migration.run_all Dir["couchdb/migrations/**/*.rb"]
+  end
 
   task :check_env do
     unless ENV['MERB_ENV']
