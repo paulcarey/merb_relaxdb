@@ -36,7 +36,7 @@ end
 
 desc "Install the gem"
 task :install => [:package] do
-  sh %{sudo gem install --local pkg/#{GEM_NAME}-#{GEM_VERSION} --no-update-sources}
+  sh %{gem install --no-rdoc --no-ri --local pkg/#{GEM_NAME}-#{GEM_VERSION}}
 end
 # task :install do
 #   Merb::RakeHelper.install(GEM_NAME, :version => GEM_VERSION, :local => true)

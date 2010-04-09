@@ -17,6 +17,7 @@ namespace :relaxdb do
     RelaxDB.use_db RelaxDB.db.name    
     RelaxDB.enable_view_creation
     Rake::Task["merb_env"].invoke
+    RelaxDB::View.design_doc.save
   end
   
   desc "Create CouchDB views from hand coded JavaScript"
