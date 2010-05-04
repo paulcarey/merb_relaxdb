@@ -1,10 +1,9 @@
 require 'rubygems'
 require 'rake/gempackagetask'
-require 'merb-core/tasks/merb_rake_helper'
 
 PLUGIN = "merb_relaxdb"
 GEM_NAME = "merb_relaxdb"
-GEM_VERSION = "1.0"
+GEM_VERSION = "1.1"
 AUTHOR = "Paul Carey"
 EMAIL = "paul.p.carey@gmail.com"
 HOMEPAGE = "http://github.com/paulcarey/merb_relaxdb/"

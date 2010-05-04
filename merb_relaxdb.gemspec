@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "merb_relaxdb"
-  s.version = "1.0"
-  s.date = "2008-11-27"
+  s.version = "1.1"
+  s.date = "2010-04-10"
   s.summary = "Merb plugin that provides integration with CouchDB"
   s.email = "paul.p.carey@gmail.com"
   s.homepage = "http://github.com/paulcarey/merb_relaxdb/"

@@ -1,6 +1,8 @@
 # make sure we're running inside Merb
 if defined?(Merb::Plugins)
-  dependency "relaxdb"
+  
+  # As of Merb 1.1 the RelaxDB dependency should be expressed in the app's Gemfile
+  # dependency "relaxdb"
 
   # Merb gives you a Merb::Plugins.config hash...feel free to put your stuff in your piece of it
   Merb::Plugins.config[:merb_relaxdb] = {
