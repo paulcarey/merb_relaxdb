@@ -10,7 +10,7 @@ module Merb
       def connect
         begin
           configure_db
-          Merb.logger.info "RelaxDB connected to CouchDB #{::RelaxDB.db.uri}"
+          Merb.logger.info "RelaxDB: #{::RelaxDB.db.uri}/_design/#{::RelaxDB.dd}"
         rescue => e
           uri = ::RelaxDB.db ? ::RelaxDB.db.uri : "<initialisation error>"
           Merb.logger.fatal "RelaxDB could not connect to CouchDB at #{uri} \n\tRoot cause:#{e}\n#{e.backtrace.join("\n")}"
@@ -24,7 +24,7 @@ module Merb
           config = full_config[Merb.environment.to_sym]
           config[:logger] = Merb.logger
           ::RelaxDB.configure(config)
-          ::RelaxDB.use_db(config[:db])
+          ::RelaxDB.db.name = config[:db]
         else
           copy_sample_config
           Merb.logger.error! "No couchdb.yml file found in #{Merb.root}/config."

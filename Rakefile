@@ -3,7 +3,7 @@ require 'rake/gempackagetask'
 
 PLUGIN = "merb_relaxdb"
 GEM_NAME = "merb_relaxdb"
-GEM_VERSION = "1.1"
+GEM_VERSION = "1.11"
 AUTHOR = "Paul Carey"
 EMAIL = "paul.p.carey@gmail.com"
 HOMEPAGE = "http://github.com/paulcarey/merb_relaxdb/"
